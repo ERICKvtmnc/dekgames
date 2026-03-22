@@ -1,0 +1,214 @@
+/* DEKGames — Estilo Global | Branco + Colorido */
+@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&family=Nunito:wght@400;600;700;800;900&display=swap');
+
+:root {
+  --bg: #F0F4FF;
+  --branco: #FFFFFF;
+  --texto: #1A1A2E;
+  --muted: #7B8BB2;
+  --borda: #E2E8F8;
+  --az: #4D96FF;
+  --r: #FF4757;
+  --o: #FF6B35;
+  --a: #FFD93D;
+  --v: #6BCB77;
+  --rx: #C77DFF;
+  --rosa: #FF6EB4;
+  --shadow: 0 4px 24px rgba(77,150,255,.10);
+  --shadow-h: 0 10px 36px rgba(77,150,255,.20);
+  --rad: 20px;
+  --trans: .2s ease;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{font-size:16px;scroll-behavior:smooth}
+body{font-family:'Nunito',sans-serif;background:var(--bg);color:var(--texto);min-height:100vh}
+a{text-decoration:none;color:inherit}
+button{cursor:pointer;border:none;font-family:'Nunito',sans-serif}
+
+/* ── MODAL OVERLAY ── */
+.modal-overlay{
+  position:fixed;inset:0;z-index:500;
+  background:rgba(26,26,46,.72);backdrop-filter:blur(8px);
+  display:flex;align-items:center;justify-content:center;padding:20px;overflow-y:auto;
+}
+@keyframes popIn{from{opacity:0;transform:scale(.85)}to{opacity:1;transform:scale(1)}}
+
+/* ── CADASTRO ── */
+.modal-box{
+  background:var(--branco);border-radius:28px;padding:40px 28px;
+  width:100%;max-width:400px;text-align:center;
+  box-shadow:0 24px 64px rgba(0,0,0,.15);animation:popIn .35s cubic-bezier(.34,1.56,.64,1);
+}
+.modal-emoji{font-size:3.2rem;margin-bottom:10px}
+.modal-box h2{font-family:'Fredoka',sans-serif;font-size:1.85rem;margin-bottom:6px}
+.modal-box p{color:var(--muted);font-size:.88rem;margin-bottom:22px}
+.modal-box input{
+  width:100%;padding:13px 16px;border:2px solid var(--borda);
+  border-radius:14px;font-family:'Nunito',sans-serif;font-size:1rem;
+  outline:none;margin-bottom:13px;transition:border-color var(--trans);
+}
+.modal-box input:focus{border-color:var(--az)}
+.sexo-wrap{display:flex;gap:8px;margin-bottom:18px}
+.sexo-btn{
+  flex:1;padding:11px 6px;border:2px solid var(--borda);border-radius:12px;
+  font-size:.85rem;font-weight:700;background:var(--branco);color:var(--muted);
+  transition:all var(--trans);
+}
+.sexo-btn.ativo{border-color:var(--az);background:#EEF4FF;color:var(--az)}
+.btn-primario{
+  width:100%;padding:14px;background:linear-gradient(135deg,var(--az),var(--rx));
+  color:#fff;border-radius:14px;font-size:1rem;font-weight:800;
+  transition:transform var(--trans),box-shadow var(--trans);
+}
+.btn-primario:hover{transform:scale(1.03);box-shadow:0 8px 24px rgba(77,150,255,.3)}
+
+/* ── RANKING ── */
+.ranking-box{
+  background:var(--branco);border-radius:28px;width:100%;max-width:500px;
+  overflow:hidden;box-shadow:0 24px 64px rgba(0,0,0,.15);animation:popIn .3s ease;margin:auto;
+}
+.ranking-topo{
+  background:linear-gradient(135deg,var(--a),var(--o));
+  padding:22px 24px 18px;position:relative;
+}
+.ranking-topo h2{font-family:'Fredoka',sans-serif;font-size:1.7rem;color:var(--texto)}
+.ranking-topo p{font-size:.8rem;color:rgba(26,26,46,.7);font-weight:600}
+.btn-fechar{
+  position:absolute;top:14px;right:14px;width:32px;height:32px;
+  border-radius:50%;background:rgba(0,0,0,.12);color:var(--texto);
+  font-size:1rem;display:flex;align-items:center;justify-content:center;
+  transition:background var(--trans);
+}
+.btn-fechar:hover{background:rgba(0,0,0,.22)}
+.ranking-lista{padding:14px 18px 22px;max-height:65vh;overflow-y:auto}
+.ranking-item{
+  display:flex;align-items:center;gap:10px;
+  padding:11px 12px;border-radius:13px;margin-bottom:7px;
+  transition:background var(--trans);
+}
+.ranking-item:hover{background:var(--bg)}
+.ranking-item.eu{background:#EEF4FF;border:2px solid var(--az)}
+.rank-pos{font-family:'Fredoka',sans-serif;font-size:1.05rem;font-weight:700;width:30px;text-align:center;color:var(--muted);flex-shrink:0}
+.rank-pos.p1{color:var(--a);font-size:1.35rem}
+.rank-avatar{width:36px;height:36px;border-radius:50%;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:19px;background:linear-gradient(135deg,var(--az),var(--rx))}
+.rank-info{flex:1;min-width:0}
+.rank-nome{font-weight:800;font-size:.88rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.rank-sexo{font-size:.7rem;color:var(--muted);font-weight:600}
+.rank-pts{font-family:'Fredoka',sans-serif;font-size:1.05rem;font-weight:700;color:var(--o);flex-shrink:0}
+.ranking-vazio{text-align:center;padding:36px 16px;color:var(--muted);font-size:.9rem}
+
+/* ── MODAL JOGO ── */
+.jogo-box{
+  background:var(--branco);border-radius:22px;
+  width:100%;max-width:580px;overflow:hidden;
+  box-shadow:0 24px 64px rgba(0,0,0,.2);animation:popIn .28s ease;
+  display:flex;flex-direction:column;max-height:94vh;
+}
+.jogo-header{
+  padding:14px 18px;display:flex;align-items:center;
+  justify-content:space-between;border-bottom:2px solid var(--borda);flex-shrink:0;
+}
+.jogo-titulo{font-family:'Fredoka',sans-serif;font-size:1.25rem;color:var(--texto)}
+.btn-fechar-jogo{
+  width:32px;height:32px;border-radius:50%;background:var(--bg);
+  font-size:1rem;display:flex;align-items:center;justify-content:center;
+  transition:background var(--trans);
+}
+.btn-fechar-jogo:hover{background:var(--borda)}
+.jogo-area{flex:1;overflow-y:auto;padding:18px}
+.jogo-canvas-wrap{display:flex;justify-content:center;margin-bottom:14px}
+canvas{border-radius:13px;border:2px solid var(--borda);max-width:100%;touch-action:none}
+.jogo-score{text-align:center;padding:10px;background:var(--bg);border-radius:11px;margin-bottom:13px}
+.jogo-score strong{font-family:'Fredoka',sans-serif;font-size:1.35rem;color:var(--az)}
+.jogo-score span{font-size:.78rem;color:var(--muted);display:block;font-weight:600}
+.jogo-controles{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-bottom:13px}
+.btn-jogo{
+  padding:9px 20px;border-radius:11px;font-weight:800;font-size:.88rem;
+  background:linear-gradient(135deg,var(--az),var(--rx));color:#fff;
+  transition:transform var(--trans),box-shadow var(--trans);
+}
+.btn-jogo:hover{transform:scale(1.05);box-shadow:0 4px 14px rgba(77,150,255,.3)}
+.btn-jogo.peri{background:linear-gradient(135deg,var(--r),var(--o))}
+.btn-jogo.verde{background:linear-gradient(135deg,var(--v),#27AE60)}
+.jogo-rank{background:var(--bg);border-radius:13px;padding:13px}
+.jogo-rank h4{font-family:'Fredoka',sans-serif;font-size:.95rem;margin-bottom:9px;color:var(--texto)}
+.jr-item{display:flex;align-items:center;gap:8px;padding:7px 9px;background:var(--branco);border-radius:9px;margin-bottom:5px;font-size:.8rem}
+.jr-pos{width:22px;font-weight:800;color:var(--muted);text-align:center;flex-shrink:0}
+.jr-pos.p1{color:var(--a);font-size:.95rem}
+.jr-nome{flex:1;font-weight:700}
+.jr-pts{font-weight:900;color:var(--o)}
+
+/* ── HEADER ── */
+.site-header{background:var(--branco);border-bottom:2px solid var(--borda);position:sticky;top:0;z-index:100}
+.header-inner{max-width:1280px;margin:0 auto;padding:0 18px;height:62px;display:flex;align-items:center;justify-content:space-between;gap:14px}
+.logo{display:flex;align-items:center;gap:9px;text-decoration:none}
+.logo-icone{width:38px;height:38px;border-radius:11px;background:linear-gradient(135deg,var(--az),var(--rx));display:flex;align-items:center;justify-content:center;font-size:21px;box-shadow:0 4px 12px rgba(77,150,255,.28)}
+.logo-texto{font-family:'Fredoka',sans-serif;font-size:1.5rem;font-weight:700;color:var(--texto)}
+.logo-texto span{color:var(--az)}
+.header-direita{display:flex;align-items:center;gap:9px}
+.btn-ranking-header{background:linear-gradient(135deg,var(--a),var(--o));color:var(--texto);font-weight:800;font-size:.8rem;padding:7px 14px;border-radius:99px;box-shadow:0 3px 10px rgba(255,180,0,.22);transition:transform var(--trans);white-space:nowrap}
+.btn-ranking-header:hover{transform:scale(1.05)}
+.perfil-header{display:flex;align-items:center;gap:9px;background:var(--bg);border-radius:99px;padding:5px 14px 5px 5px;border:2px solid var(--borda);cursor:pointer;transition:border-color var(--trans)}
+.perfil-header:hover{border-color:var(--az)}
+.perfil-avatar{width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:17px;background:linear-gradient(135deg,var(--a),var(--o))}
+.perfil-nome{font-size:.82rem;font-weight:800;color:var(--texto)}
+.perfil-pts{font-size:.7rem;color:var(--muted);font-weight:600}
+
+/* ── HERO ── */
+.hero{background:linear-gradient(135deg,#667eea,#764ba2 50%,#f093fb);padding:52px 20px 44px;text-align:center;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 50% 0%,rgba(255,255,255,.12),transparent 70%);pointer-events:none}
+.hero-tag{display:inline-block;background:rgba(255,255,255,.22);color:#fff;font-size:.73rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase;padding:5px 15px;border-radius:99px;margin-bottom:13px;border:1px solid rgba(255,255,255,.3)}
+.hero h1{font-family:'Fredoka',sans-serif;font-size:clamp(2rem,5.5vw,3.5rem);color:#fff;font-weight:700;line-height:1.1;margin-bottom:9px}
+.hero h1 em{color:var(--a);font-style:normal}
+.hero p{color:rgba(255,255,255,.78);font-size:.92rem}
+.hero-stats{display:flex;justify-content:center;gap:20px;margin-top:22px;flex-wrap:wrap}
+.hero-stat{background:rgba(255,255,255,.15);backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,.25);border-radius:13px;padding:11px 18px;color:#fff}
+.hero-stat strong{display:block;font-family:'Fredoka',sans-serif;font-size:1.45rem}
+.hero-stat span{font-size:.68rem;opacity:.8;text-transform:uppercase;letter-spacing:.06em}
+
+/* ── GRID ── */
+.container{max-width:1280px;margin:0 auto;padding:0 18px}
+.secao-header{display:flex;align-items:center;gap:13px;padding:34px 0 18px}
+.secao-titulo{font-family:'Fredoka',sans-serif;font-size:1.6rem;color:var(--texto)}
+.secao-linha{flex:1;height:2px;background:var(--borda);border-radius:99px}
+.secao-badge{background:var(--az);color:#fff;font-size:.7rem;font-weight:800;padding:3px 11px;border-radius:99px;white-space:nowrap}
+.jogos-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;padding-bottom:60px}
+@media(min-width:540px){.jogos-grid{grid-template-columns:repeat(3,1fr)}}
+@media(min-width:800px){.jogos-grid{grid-template-columns:repeat(4,1fr)}}
+@media(min-width:1100px){.jogos-grid{grid-template-columns:repeat(5,1fr)}}
+
+/* ── CARD ── */
+.card-jogo{
+  background:var(--branco);border-radius:var(--rad);border:2px solid var(--borda);
+  overflow:hidden;cursor:pointer;
+  transition:transform var(--trans),box-shadow var(--trans),border-color var(--trans);
+  animation:fadeUp .4s ease both;position:relative;
+}
+.card-jogo:hover{transform:translateY(-6px);box-shadow:var(--shadow-h);border-color:var(--az)}
+.card-jogo::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--az),var(--rx));transform:scaleX(0);transition:transform var(--trans);z-index:1}
+.card-jogo:hover::before{transform:scaleX(1)}
+@keyframes fadeUp{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:translateY(0)}}
+.card-thumb{width:100%;aspect-ratio:1;display:flex;align-items:center;justify-content:center;font-size:3rem;position:relative}
+.card-diff{position:absolute;top:8px;right:8px;font-size:.58rem;font-weight:800;letter-spacing:.06em;text-transform:uppercase;padding:3px 8px;border-radius:99px}
+.d-facil{background:#DCFCE7;color:#16A34A}
+.d-medio{background:#FEF9C3;color:#CA8A04}
+.d-dificil{background:#FEE2E2;color:#DC2626}
+.d-extreme{background:#F3E8FF;color:#7C3AED}
+.card-info{padding:11px 13px 13px}
+.card-nome{font-family:'Fredoka',sans-serif;font-size:.95rem;font-weight:600;color:var(--texto);margin-bottom:3px}
+.card-pts{font-size:.72rem;color:var(--muted);font-weight:700}
+.card-pts span{color:var(--o);font-weight:900}
+
+/* ── TOAST ── */
+.toast{position:fixed;bottom:22px;left:50%;transform:translateX(-50%) translateY(80px);background:var(--texto);color:#fff;padding:11px 22px;border-radius:13px;font-weight:700;font-size:.88rem;z-index:9999;transition:transform .32s cubic-bezier(.34,1.56,.64,1);pointer-events:none;white-space:nowrap}
+.toast.show{transform:translateX(-50%) translateY(0)}
+
+/* ── VISUALLY HIDDEN ── */
+.vh{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0)}
+
+@media(max-width:420px){
+  .hero h1{font-size:1.75rem}
+  .header-inner{padding:0 12px}
+  .jogos-grid{gap:10px}
+  .perfil-nome,.perfil-pts{display:none}
+}
